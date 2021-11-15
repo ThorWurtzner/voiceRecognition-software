@@ -21,15 +21,14 @@ def recognize_speech_from_mic(recognizer, microphone):
 def discordHandler(phrase):
     if phrase.startswith("play"):
         newPhrase = "." + phrase
-    print(newPhrase)
+        print(newPhrase)
+    else:
+        print(phrase)
 
 while True:
-    try:
-        if keyboard.is_pressed('½'):
-            print("Activated")
+    if keyboard.is_pressed('½'):
+        print("Activated")
 
-            recognizer = sr.Recognizer()
-            microphone = sr.Microphone()
-            recognize_speech_from_mic(recognizer, microphone)
-    except:
-        break
+        recognizer = sr.Recognizer()
+        microphone = sr.Microphone()
+        recognize_speech_from_mic(recognizer, microphone)
