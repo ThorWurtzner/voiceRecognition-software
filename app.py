@@ -17,6 +17,9 @@ USER_AUTH = os.getenv("USER_AUTH")
 # client = discord.Client()
 # from discord import Webhook, RequestsWebhookAdapter
 
+activationKey = "½"
+print("Current Keybind: " + activationKey + "\nListening for activation...\n Feel free to minimize this window.")
+
 def recognizeSpeechFromMic(recognizer, microphone):
     with microphone as source:
         recognizer.adjust_for_ambient_noise(source)
@@ -29,7 +32,7 @@ def recognizeSpeechFromMic(recognizer, microphone):
         print("API unavailable")
 
     except sr.UnknownValueError:
-        print("Unable to recognize speech")
+        print("Recording stopped: Unable to recognize speech")
 
 def discordHandler(phrase):
     if phrase.startswith("play") or phrase.startswith("skip") or phrase.startswith("stop") or phrase.startswith("resume") or phrase.startswith("disconnect"):
@@ -63,7 +66,7 @@ def discordHandler(phrase):
         print("Not relevant for Discord")
 
 while True:
-    if keyboard.is_pressed('½'):
+    if keyboard.is_pressed(activationKey):
         print("Activated")
 
         recognizer = sr.Recognizer()
